@@ -5,6 +5,28 @@
     </head>
 
     <body>
-        Welcome to Kfly's Snake Game!
+        <canvas id="gameCanvas" width="300" height="300"></canvas> 
+
+        <script>
+            /** CONSTANTS **/
+            const CANVAS_BORDER_COLOR = "black";
+            const CANVAS_BACKGROUND_COLOR = "white";
+
+            // Get the canvas element
+            var gameCanvas = document.getElementById("gameCanvas");
+
+            // Return a two dimensional drawing context
+            var ctx = gameCanvas.getContext("2d");
+
+            // Select the colour to fill the canvas
+            ctx.fillStyle = CANVAS_BACKGROUND_COLOR;
+            // Select the color for the border of the canvas
+            ctx.strokestyle = CANVAS_BORDER_COLOR;
+
+            // Draw a "filled" rectangle to cover the entire canvas
+            ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+            // Draw a "border" around the entire canvas
+            ctx.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
+        </script>
     </body>
 </html>
