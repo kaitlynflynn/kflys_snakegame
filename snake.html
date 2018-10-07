@@ -41,6 +41,11 @@
             // Draw a "border" around the entire canvas
             ctx.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
             
+            // Starts Game! 
+            main(); 
+            // Calls changeDirection whenever user presses arrow key
+            document.addEventListener("keydown", changeDirection)
+
             function main() {
                 setTimeout(function onTick() {
                     clearCanvas();
@@ -50,9 +55,6 @@
                     main();
                 }, 100)
             }
-
-                drawSnake();
-
 
             // Changes background color of canvas & draws border around it
             function clearCanvas() {
