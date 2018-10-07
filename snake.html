@@ -3,14 +3,14 @@
     <head>
         <title>Kfly's Snake Game</title>
     </head>
-
     <body>
         <canvas id="gameCanvas" width="300" height="300"></canvas> 
-
         <script>
             /** CONSTANTS **/
             const CANVAS_BORDER_COLOR = "black";
             const CANVAS_BACKGROUND_COLOR = "white";
+            const SNAKE_COLOR = "lightgreen";
+            const SNAKE_BORDER_COLOR = "darkgreen";
             
             // Represent snake as an array of coordinates
             // First pair of coordinates represents the head at the very right of the snake
@@ -20,21 +20,12 @@
                 {x: 130, y: 150},
                 {x: 120, y: 150},
                 {x: 110, y: 150},
-            ];
-            
-            // Function used to display snake on the canvas. This function draws a rectangle for each pair of coordinates above.
-            function drawSnakePart(snakePart) {
-                ctx.fillStyle = 'lightgreen';
-                ctx.fillStyle = 'darkgreen';
+            ]
 
-                ctx.fillRect(snakePart.x, snakePart.y, 10, 10);
-                ctx.strokeRect(snakePart.x, snakePart.y, 10, 10);
-            }
-
-            // Get the canvas element
+             // Get the canvas element
             var gameCanvas = document.getElementById("gameCanvas");
-
-            // Return a two dimensional drawing context
+            
+            // Return two dimensional drawing context
             var ctx = gameCanvas.getContext("2d");
 
             // Select the colour to fill the canvas
@@ -46,6 +37,26 @@
             ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
             // Draw a "border" around the entire canvas
             ctx.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
+
+            drawSnake();
+
+            // Function to draw snake on canvas 
+            function drawSnake() {
+                // loop through snake parts drawing each part to canvas
+                snake.forEach(drawSnakePart);
+            }
+
+            // Function used to display snake on the canvas. This function draws a rectangle for each pair of coordinates above.
+            function drawSnakePart(snakePart) {
+                // Sets color of snake part
+                ctx.fillStyle = SNAKE_COLOR;
+                // Sets border color of snake part
+                ctx.strokestyle = SNAKE_BORDER_COLOR;
+                // Draws a filled rectangle to represent snake part at part coordinates
+                ctx.fillRect(snakePart.x, snakePart.y, 10, 10);
+                // Draws border around snake part at part coordinates 
+                ctx.strokeRect(snakePart.x, snakePart.y, 10, 10);
+            }
         </script>
     </body>
 </html>
