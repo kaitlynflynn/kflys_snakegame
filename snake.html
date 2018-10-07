@@ -38,7 +38,16 @@
             // Draw a "border" around the entire canvas
             ctx.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
 
+
+            // Draws snake on canvas
             drawSnake();
+            
+            // Advances snake by changing x/y coordinates. x = horizontal velocity & y = vertical velocity
+            function advanceSnake() {
+                const head = {x: snake[0].x + dx, y: snake[0].y};
+                snake.unshift(head);
+                snake.pop();
+            }
 
             // Function to draw snake on canvas 
             function drawSnake() {
