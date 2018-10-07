@@ -41,6 +41,31 @@
             // Draw a "border" around the entire canvas
             ctx.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
             
+            stepOne();
+
+                function stepOne() {
+                setTimeout(function onTick() {
+                    clearCanvas();
+                    advanceSnake();
+                    drawSnake();
+                    // Call 2nd function
+                    stepTwo();
+                }, 100)
+            }
+
+                function stepTwo() {
+                setTimeout(function onTick() {
+                    clearCanvas();
+                    advanceSnake();
+                    drawSnake();
+                    // Call 3rd function
+                    stepThree();
+                }, 100)
+            }
+
+                drawSnake();
+
+
             // Changes background color of canvas & draws border around it
             function clearCanvas() {
                 ctx.fillStyle = "white";
