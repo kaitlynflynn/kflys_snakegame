@@ -5,6 +5,7 @@
     </head>
     <body>
         <canvas id="gameCanvas" width="300" height="300"></canvas> 
+
         <script>
             /** CONSTANTS **/
             const CANVAS_BORDER_COLOR = "black";
@@ -29,20 +30,27 @@
 
              // Get the canvas element
             var gameCanvas = document.getElementById("gameCanvas");
-            
             // Return two dimensional drawing context
             var ctx = gameCanvas.getContext("2d");
-
             // Select the colour to fill the canvas
             ctx.fillStyle = CANVAS_BACKGROUND_COLOR;
             // Select the color for the border of the canvas
             ctx.strokestyle = CANVAS_BORDER_COLOR;
-
             // Draw a "filled" rectangle to cover the entire canvas
             ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
             // Draw a "border" around the entire canvas
             ctx.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
             
+            // Changes background color of canvas & draws border around it
+            function clearCanvas() {
+                ctx.fillStyle = "white";
+                ctx.strokeStyle = "black";
+                // Draws filled rectangle to cover entire canvas
+                ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+                // Draws border around entire canvas
+                ctx.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
+            }
+
             // Move on step to the right
             advanceSnake()
             // Change vertical velocity to 0
@@ -73,7 +81,7 @@
                 ctx.fillStyle = SNAKE_COLOR;
                 // Sets border color of snake part
                 ctx.strokestyle = SNAKE_BORDER_COLOR;
-                
+
                 // Draws a filled rectangle to represent snake part at part coordinates
                 ctx.fillRect(snakePart.x, snakePart.y, 10, 10);
                 // Draws border around snake part at part coordinates 
