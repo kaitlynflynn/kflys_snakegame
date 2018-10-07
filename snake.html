@@ -83,6 +83,26 @@
                 snake.unshift(head);
                 snake.pop();
             }
+            
+            // Generates random number that's a multiple of 10 given min/max
+            function randomTen(min, max) {
+                return Math.round((Math.random() * (max-min) + min) / 10) * 10;
+            }
+            
+            // Creates snake food with random set of coordinates 
+            function createFood() {
+                // Generates random number for x food coordinate 
+                foodX = randomTen(0, gameCanvas.width - 10);
+                // Generates random number for y food coordinate 
+                foodY = randomTen(0, gameCanvas.height - 10);
+                
+                // if new food location is where snake currently is, this will generate a new food location
+                snake.forEach(function isFoodOnSnake(part) {
+                    const foodIsOnSnake = part.x == foodX && part.y == foodY
+                    if (foodIsOnSnake)
+                        createFood();
+                });
+            }
 
             // Function to draw snake on canvas 
             function drawSnake() {
