@@ -43,12 +43,15 @@
             
             // Starts Game! 
             main(); 
+            // Create snake food location
+            createFood();
             // Calls changeDirection whenever user presses arrow key
-            document.addEventListener("keydown", changeDirection)
+            document.addEventListener("keydown", changeDirection);
 
             function main() {
                 setTimeout(function onTick() {
                     clearCanvas();
+                    drawFood();
                     advanceSnake();
                     drawSnake();
                     // Call main function again
@@ -77,6 +80,14 @@
             // Draws snake on canvas
             drawSnake();
             
+            // Draws snake food on canvas 
+            function drawFood() {
+                ctx.fillStyle = "red"; 
+                ctx.strokestyle = "darkred";
+                ctx.fillRect(foodX, foodY, 10, 10);
+                ctx.strokeRect(foodX, foodY, 10, 10);
+            }
+
             // Advances snake by changing x/y coordinates. x = horizontal velocity & y = vertical velocity
             function advanceSnake() {
                 const head = {x: snake[0].x + dx, y: snake[0].y + dy};
