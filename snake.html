@@ -90,9 +90,19 @@
 
             // Advances snake by changing x/y coordinates. x = horizontal velocity & y = vertical velocity
             function advanceSnake() {
-                const head = {x: snake[0].x + dx, y: snake[0].y + dy};
+                // Creates head of the snake
+                const head = {x: snake[0].x + dx, y: snake[0].y};
+                // This adds the new head to the beginning of the snakes body
                 snake.unshift(head);
-                snake.pop();
+
+                const didEatFood = snake[0].x === foodX && snake[0].y === foodY;
+                if (didEatFood) {
+                    // Generates new food location
+                    createFood();
+                } else {
+                    // Removes last part of the snakes body
+                    snake.pop();
+                }
             }
             
             // Generates random number that's a multiple of 10 given min/max
