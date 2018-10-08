@@ -3,12 +3,15 @@
     <head>
         <title>Kfly's Snake Game</title>
     </head>
+
     <body>
+
         <div id="score">0</div>
         <canvas id="gameCanvas" width="300" height="300"></canvas> 
 
         <script>
             /** CONSTANTS **/
+            const GAME_SPEED = 100;
             const CANVAS_BORDER_COLOR = "black";
             const CANVAS_BACKGROUND_COLOR = "white";
             const SNAKE_COLOR = "lightgreen";
@@ -27,24 +30,22 @@
 
             // User's Score on Game
             let score = 0;
-            
+            // When set to true, the snake changes direction
+            let changingDirection = false;
+            // X coordinate for snake food
+            let foodX;
+            // Y coordinate for snake food
+            let foodY;
             // Horizontal velocity; allows snake to move left/right
             let dx = 10;
             // Vertical velocity; allows snake to move up/down
             let dy = 0;
 
              // Get the canvas element
-            var gameCanvas = document.getElementById("gameCanvas");
+            const gameCanvas = document.getElementById("gameCanvas");
             // Return two dimensional drawing context
-            var ctx = gameCanvas.getContext("2d");
-            // Select the colour to fill the canvas
-            ctx.fillStyle = CANVAS_BACKGROUND_COLOR;
-            // Select the color for the border of the canvas
-            ctx.strokestyle = CANVAS_BORDER_COLOR;
-            // Draw a "filled" rectangle to cover the entire canvas
-            ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
-            // Draw a "border" around the entire canvas
-            ctx.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
+            const ctx = gameCanvas.getContext("2d");
+
             
             // Starts Game! 
             main(); 
@@ -52,11 +53,14 @@
             createFood();
             // Calls changeDirection whenever user presses arrow key
             document.addEventListener("keydown", changeDirection);
-
+            
+            // Main function of the game and can be called repeatedly to advance the game 
             function main() {
+                // If game has ended, return early to stop the game
                 if (didGameEnd()) return;
 
                 setTimeout(function onTick() {
+                    changingDirection = false;
                     clearCanvas();
                     drawFood();
                     advanceSnake();
@@ -64,13 +68,13 @@
 
                     // Call main function again
                     main();
-                }, 100)
+                }, GAME_SPEED) // Game Speed set to 100 above in const
             }
 
             // Changes background color of canvas & draws border around it
             function clearCanvas() {
                 // Fills color of background
-                ctx.fillStyle = "CANVAS_BACKGROUND_COLOR;
+                ctx.fillStyle = "CANVAS_BACKGROUND_COLOR";
                 // Fills color for border of canvas
                 ctx.strokeStyle = "CANVAS_BORDER_COLOR";
 
@@ -79,22 +83,7 @@
                 // Draws border around entire canvas
                 ctx.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
             }
-            
-            // function created to end the game. NOTE: We start our loop from index 4 since if it were set to 0, 'didCollide' would automatically think this to be true, and end the game. Last it would be impossible for the first 3 parts to touch eachother, which is why we start from 4. In a nut shell, this function will return TRUE if head of the snake touched any other part of the game or walls.
-            function didGameEnd() {
-                for (let i = 4; i < snake.length; i++) {
-                    const didCollide = snake[i].x === snake[0].x && snake[i].y === snake[0].y
-                    if (didCollide) return true
-                }
 
-                const hitLeftWall = snake[0].x < 0;
-                const hitRightWall = snake[0].x > gameCanvas.width - 10;
-                const hitTopWall = snake[0].y < 0;
-                const hitBottomWall = snake[0].y > gameCanvas.height - 10;
-
-                return hitLeftWall || hitRightWall || hitTopWall || hitBottomWall 
-            }
-            
             // Draws snake food on canvas 
             function drawFood() {
                 // Sets food color to what is listed above in const
@@ -125,8 +114,22 @@
                     snake.pop();
                 }
             }
+
+            // function created to end the game. NOTE: We start our loop from index 4 since if it were set to 0, 'didCollide' would automatically think this to be true, and end the game. Last it would be impossible for the first 3 parts to touch eachother, which is why we start from 4. In a nut shell, this function will return TRUE if head of the snake touched any other part of the game or walls.
+            function didGameEnd() {
+                for (let i = 4; i < snake.length; i++) {
+                    if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true
+                }
+
+                const hitLeftWall = snake[0].x < 0;
+                const hitRightWall = snake[0].x > gameCanvas.width - 10;
+                const hitTopWall = snake[0].y < 0;
+                const hitBottomWall = snake[0].y > gameCanvas.height - 10;
+
+                return hitLeftWall || hitRightWall || hitTopWall || hitBottomWall 
+            }
             
-            // Generates random number that's a multiple of 10 given min/max
+            // Generates random number that's a multiple of 10 given min/max number
             function randomTen(min, max) {
                 return Math.round((Math.random() * (max-min) + min) / 10) * 10;
             }
@@ -139,8 +142,9 @@
                 foodY = randomTen(0, gameCanvas.height - 10);
                 
                 // if new food location is where snake currently is, this will generate a new food location
-                snake.forEach(function isOnSnake(part) {
-                    if (part.x == foodX && part.y == foodY) createFood();
+                snake.forEach(function isFoodOnSnake(part) {
+                    const foodIsoNsnake = part.x == foodX && part.y == foodY;
+                    if (foodIsoNsnake) createFood();
                 });
             }
 
@@ -168,8 +172,14 @@
                 const RIGHT_KEY = 39; 
                 const UP_KEY = 38;
                 const DOWN_KEY = 40;
+                
+                // This if statement will prevent the snake from reversing
+                if (changingDirection) return;
+
+                changingDirection = true;
 
                 const keyPressed = event.keyCode;
+                
                 const goingUp = dy === -10;
                 const goingDown = dy === 10;
                 const goingRight = dx === 10;
