@@ -2,22 +2,39 @@
 <html>
     <head>
         <title>Kfly's Snake Game</title>
+        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     </head>
 
     <body>
 
         <div id="score">0</div>
         <canvas id="gameCanvas" width="300" height="300"></canvas> 
+    
+        <style>
+            #gameCanvas {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            #score {
+                text-align: center;
+                font-size: 100px;
+                font-family: 'Oswald', sans-serif;
+            }
+        </style>
+    </body>
 
         <script>
             /** CONSTANTS **/
             const GAME_SPEED = 100;
-            const CANVAS_BORDER_COLOR = "black";
+            const CANVAS_BORDER_COLOR = 'black';
             const CANVAS_BACKGROUND_COLOR = "white";
-            const SNAKE_COLOR = "lightgreen";
-            const SNAKE_BORDER_COLOR = "darkgreen";
-            const FOOD_COLOR = "red";
-            const FOOD_BORDER_COLOR = "darkred";
+            const SNAKE_COLOR = 'lightgreen';
+            const SNAKE_BORDER_COLOR = 'darkgreen';
+            const FOOD_COLOR = 'red';
+            const FOOD_BORDER_COLOR = 'darkred';
             
             // Represent snake as an array of coordinates. First pair of coordinates represents the head at the very right of the snake
             let snake = [
@@ -74,9 +91,9 @@
             // Changes background color of canvas & draws border around it
             function clearCanvas() {
                 // Fills color of background
-                ctx.fillStyle = "CANVAS_BACKGROUND_COLOR";
+                ctx.fillStyle = CANVAS_BACKGROUND_COLOR;
                 // Fills color for border of canvas
-                ctx.strokeStyle = "CANVAS_BORDER_COLOR";
+                ctx.strokeStyle = CANVAS_BORDER_COLOR;
 
                 // Draws filled rectangle to cover entire canvas
                 ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
@@ -87,9 +104,9 @@
             // Draws snake food on canvas 
             function drawFood() {
                 // Sets food color to what is listed above in const
-                ctx.fillStyle = "FOOD_COLOR"; 
+                ctx.fillStyle = FOOD_COLOR; 
                 // Sets food border color to what is listed above in const
-                ctx.strokestyle = "FOOD_BORDER_COLOR";
+                ctx.strokestyle = FOOD_BORDER_COLOR;
                 ctx.fillRect(foodX, foodY, 10, 10);
                 ctx.strokeRect(foodX, foodY, 10, 10);
             }
@@ -179,7 +196,7 @@
                 changingDirection = true;
 
                 const keyPressed = event.keyCode;
-                
+
                 const goingUp = dy === -10;
                 const goingDown = dy === 10;
                 const goingRight = dx === 10;
@@ -207,5 +224,4 @@
             }
 
         </script>
-    </body>
 </html>
