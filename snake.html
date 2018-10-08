@@ -140,9 +140,7 @@
                 
                 // if new food location is where snake currently is, this will generate a new food location
                 snake.forEach(function isOnSnake(part) {
-                    const foodIsOnSnake = part.x == foodX && part.y == foodY
-                    if (foodIsOnSnake)
-                        createFood();
+                    if (part.x == foodX && part.y == foodY) createFood();
                 });
             }
 
@@ -163,7 +161,8 @@
                 // Draws border around snake part at part coordinates 
                 ctx.strokeRect(snakePart.x, snakePart.y, 10, 10);
             }
-
+            
+            // Changes direction of the snake determined by what arrow key user hits. This will update the snakes horizontal/vertical velocity. Direction cannot be switched to opposite direction which prevents snake from going in reverse. 
             function changeDirection(event) {
                 const LEFT_KEY = 37;
                 const RIGHT_KEY = 39; 
