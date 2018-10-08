@@ -101,6 +101,10 @@
 
                 const didEatFood = snake[0].x === foodX && snake[0].y === foodY;
                 if (didEatFood) {
+                    // Increase User's score
+                    score += 10;
+                    // Display User's score on screen
+                    document.getElementById('score').innerHTML = score;
                     // Generates new food location
                     createFood();
                 } else {
