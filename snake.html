@@ -11,21 +11,7 @@
         <h1>Beetlejuice Sandworm Game</h1>
         <div id="score">0</div>
         <canvas id="gameCanvas" width="400" height="300"></canvas> 
-    
-        <!-- <style>
-            #gameCanvas {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
-
-            #score {
-                text-align: center;
-                font-size: 100px;
-                font-family: 'Oswald', sans-serif;
-            }
-        </style> -->
+        <!-- <button type="button" id="startBtn" onClick="main()">START</button> -->
     </body>
 
         <script>
@@ -37,7 +23,8 @@
             const SNAKE_BORDER_COLOR = 'darkgreen';
             const FOOD_COLOR = 'indianred';
             const FOOD_BORDER_COLOR = 'darkred';
-            
+            // const startBtn = document.getElementById('startBtn'); 
+
             // Represent snake as an array of coordinates. First pair of coordinates represents the head at the very right of the snake
             let snake = [
                 {x: 150, y: 150},
@@ -64,7 +51,6 @@
             const gameCanvas = document.getElementById("gameCanvas");
             // Return two dimensional drawing context
             const ctx = gameCanvas.getContext("2d");
-
             
             // Starts Game! 
             main(); 
