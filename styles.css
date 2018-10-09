@@ -3,10 +3,23 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border: 6px double black;
 }
 
 #score {
     text-align: center;
-    font-size: 100px;
-    font-family: 'Oswald', sans-serif;
+    font-size: 40px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+body {
+    background: url('https://i.imgur.com/5Oqepq8.png') no-repeat center fixed;
+    background-size: cover;
+}
+
+h1 {
+    text-align: center;
+    font-size: 35px;
+    font-family: 'Codystar', cursive;
+    color: white;
 }
