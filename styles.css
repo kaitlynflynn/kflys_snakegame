@@ -18,7 +18,27 @@
     text-align: center;
     font-size: 40px;
     font-family: 'Press Start 2P', cursive;
+    animation: glowing1 1s infinite;
 }
+
+@keyframes glowing1 {
+    0% { text-shadow: 0 0 10px #fff; }
+    40% { text-shadow: 0 0 20px #fff; }
+    80% { text-shadow: 0 0 30px #fff; }
+    100% { text-shadow: 0 0 40px #fff; }
+    140% { text-shadow: 0 0 50px #fff; }
+    180% { text-shadow: 0 0 60px #fff; }
+    200% { text-shadow: 0 0 70px #fff; }
+  }
+  to {
+    200% { text-shadow: 0 0 20px #fff; }
+    180% { text-shadow: 0 0 30px #fff; }
+    140% { text-shadow: 0 0 40px #fff; }
+    100% { text-shadow: 0 0 50px #fff; }
+    80% { text-shadow: 0 0 60px #fff; }
+    40% { text-shadow: 0 0 70px #fff; }
+    0% { text-shadow: 0 0 80px #fff; }
+  }
 
 /* #startBtn {
     position: absolute;
