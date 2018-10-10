@@ -4,15 +4,20 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border: 6px double black;
+    animation: glowing 5s infinite;
 }
+
+@keyframes glowing {
+    0% { box-shadow: 0 0 -10px #c4a300; }
+    40% { box-shadow: 0 0 20px #c4a300; }
+    60% { box-shadow: 0 0 20px #c4a300; }
+    100% { box-shadow: 0 0 -10px #c4a300; }
+  }
 
 #score {
     text-align: center;
     font-size: 40px;
     font-family: 'Press Start 2P', cursive;
-    /* -webkit-animation: glow2 1s ease-in-out infinite alternate;
-    -moz-animation: glow2 1s ease-in-out infinite alternate;
-    animation: glow2 1s ease-in-out infinite alternate; */
 }
 
 /* #startBtn {
@@ -36,29 +41,36 @@ h1 {
     font-size: 35px;
     font-family: 'Codystar', cursive;
     color: white;
-    -webkit-animation: glow 1s ease-in-out infinite alternate;
-    -moz-animation: glow 1s ease-in-out infinite alternate;
-    animation: glow 1s ease-in-out infinite alternate;
+    animation: glowing2 1s infinite;
 }
 
-@-webkit-keyframes glow {
-    from {
-       text-shadow: 0 0 10px #fff, 
-                    0 0 20px #fff, 
-                    0 0 30px #e60073, 
-                    0 0 40px #e60073, 
-                    0 0 50px #e60073, 
-                    0 0 60px #e60073, 
-                    0 0 70px #e60073;
+@keyframes glowing2 {
+    0% { text-shadow: 0 0 10px #fff; }
+    40% { text-shadow: 0 0 20px #fff; }
+    80% { text-shadow: 0 0 30px #e60073; }
+    100% { text-shadow: 0 0 40px #e60073; }
+    140% { text-shadow: 0 0 50px #e60073; }
+    180% { text-shadow: 0 0 60px #e60073; }
+    200% { text-shadow: 0 0 70px #e60073; }
+  }
+  to {
+    200% { text-shadow: 0 0 20px #fff; }
+    180% { text-shadow: 0 0 30px #ff4da6; }
+    140% { text-shadow: 0 0 40px #ff4da6; }
+    100% { text-shadow: 0 0 50px #ff4da6; }
+    80% { text-shadow: 0 0 60px #ff4da6; }
+    40% { text-shadow: 0 0 70px #ff4da6; }
+    0% { text-shadow: 0 0 80px #ff4da6; }
+  }
+
+  /*REEEEEEEEEEESPONSIVE*/
+
+@media (max-width: 800px) {
+    #body {
+      width: 100%;
     }
-    to {
-      text-shadow: 0 0 20px #fff, 
-                   0 0 30px #ff4da6, 
-                   0 0 40px #ff4da6, 
-                   0 0 50px #ff4da6, 
-                   0 0 60px #ff4da6, 
-                   0 0 70px #ff4da6, 
-                   0 0 80px #ff4da6;
+    p {
+      font-size: 3.5em;
     }
   }
 
