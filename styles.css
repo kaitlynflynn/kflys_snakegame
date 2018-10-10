@@ -10,6 +10,9 @@
     text-align: center;
     font-size: 40px;
     font-family: 'Press Start 2P', cursive;
+    /* -webkit-animation: glow2 1s ease-in-out infinite alternate;
+    -moz-animation: glow2 1s ease-in-out infinite alternate;
+    animation: glow2 1s ease-in-out infinite alternate; */
 }
 
 /* #startBtn {
@@ -33,4 +36,49 @@ h1 {
     font-size: 35px;
     font-family: 'Codystar', cursive;
     color: white;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
 }
+
+@-webkit-keyframes glow {
+    from {
+       text-shadow: 0 0 10px #fff, 
+                    0 0 20px #fff, 
+                    0 0 30px #e60073, 
+                    0 0 40px #e60073, 
+                    0 0 50px #e60073, 
+                    0 0 60px #e60073, 
+                    0 0 70px #e60073;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 
+                   0 0 30px #ff4da6, 
+                   0 0 40px #ff4da6, 
+                   0 0 50px #ff4da6, 
+                   0 0 60px #ff4da6, 
+                   0 0 70px #ff4da6, 
+                   0 0 80px #ff4da6;
+    }
+  }
+
+  /* @-webkit-keyframes glow2 {
+    from {
+       text-shadow: 0 0 10px #fff, 
+                    0 0 20px #fff, 
+                    0 0 30px #e9d83c93, 
+                    0 0 40px #e9d83c93, 
+                    0 0 50px #e9d83c93, 
+                    0 0 60px #e9d83c93, 
+                    0 0 70px #e9d83c93;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 
+                   0 0 30px #e2e062, 
+                   0 0 40px #e2e062, 
+                   0 0 50px #e2e062, 
+                   0 0 60px #e2e062, 
+                   0 0 70px #e2e062, 
+                   0 0 80px #e2e062;
+    }
+  } */
