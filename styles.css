@@ -40,16 +40,15 @@
     0% { text-shadow: 0 0 80px #fff; }
   }
 
-/* #startBtn {
-    position: absolute;
+#btn {
     display: block;
     justify-content: center;
-    top: 15%;
     margin: 0 auto;
-    width: 200px;
-    height: 50px;
-    font-size: 20px;
-} */
+    width: 100px;
+    height: 40px;
+    font-size: 15px;
+    margin-top: 25px;
+}
 
 body {
     background: url('https://i.imgur.com/5Oqepq8.png') no-repeat center fixed;
