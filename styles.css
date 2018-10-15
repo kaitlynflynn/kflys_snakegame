@@ -5,6 +5,7 @@
     transform: translate(-50%, -50%);
     border: 6px double black;
     animation: glowing 5s infinite;
+    margin-top: 125px;
 }
 
 @keyframes glowing {
@@ -41,13 +42,25 @@
   }
 
 #btn {
+    /* position: absolute; */
     display: block;
-    justify-content: center;
-    margin: 0 auto;
+    max-width: 300px;
+    margin-right: 25px;
+    margin: auto;
     width: 100px;
     height: 40px;
-    font-size: 15px;
-    margin-top: 25px;
+    font-size: 20px;
+    margin-top: 25px; 
+    font-family: 'Codystar', cursive;
+    font-weight: bold;
+}
+
+#note {
+    color: white;
+    text-align: center;
+    font-family: arial;
+    font-size: 14px;
+    margin-top: 12px;
 }
 
 body {
@@ -82,34 +95,48 @@ h1 {
     0% { text-shadow: 0 0 80px #ff4da6; }
   }
 
+#theme {
+    display: block;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 400px;
+    border: 6px double black;
+    /* position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 6px double black;
+    animation: glowing 5s infinite; */
+}
+
   /*REEEEEEEEEEESPONSIVE*/
 
 @media (max-width: 800px) {
     #body {
       width: 100%;
     }
-    p {
-      font-size: 3.5em;
-    }
   }
 
-  /* @-webkit-keyframes glow2 {
-    from {
-       text-shadow: 0 0 10px #fff, 
-                    0 0 20px #fff, 
-                    0 0 30px #e9d83c93, 
-                    0 0 40px #e9d83c93, 
-                    0 0 50px #e9d83c93, 
-                    0 0 60px #e9d83c93, 
-                    0 0 70px #e9d83c93;
+/* @media (min-width: 992px) {
+#body {
+    width: 100%;
+   }
+}
+
+@media (min-width: 1200px) {
+    #body {
+     width: 100%;
     }
-    to {
-      text-shadow: 0 0 20px #fff, 
-                   0 0 30px #e2e062, 
-                   0 0 40px #e2e062, 
-                   0 0 50px #e2e062, 
-                   0 0 60px #e2e062, 
-                   0 0 70px #e2e062, 
-                   0 0 80px #e2e062;
+}
+
+@media (min-width: 768px) {
+    #body {
+        width: 100%;
     }
-  } */
+}
+
+@media (min-width: 600px) {
+    #body {
+        width: 100%;
+    }
+} */
