@@ -16,3 +16,5 @@ For this application I built this entirely with the following:
 
 ## Features to Implement in the Future
 I plan to find a way to implement a leader board to track players high scores! 80's Arcade style where you enter your 3 initials. 
+
+![Screenshot of Game](2018-11-14-18-33-16.png)
